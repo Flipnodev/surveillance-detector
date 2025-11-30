@@ -101,7 +101,7 @@ class DataExporter:
                 'detection_count': threat.detection_count,
                 'dwell_time_seconds': threat.dwell_time,
                 'location_count': threat.location_count,
-                'average_rssi': threat.avg_rssi,
+                'average_rssi': threat.average_rssi if hasattr(threat, 'average_rssi') else None,
                 'rssi_trend': threat.rssi_trend,
             }
             for threat in threats.values()
@@ -170,6 +170,7 @@ class DataExporter:
         
         # Data rows
         for threat in sorted(threats.values(), key=lambda x: x.score, reverse=True):
+            avg_rssi = threat.average_rssi if hasattr(threat, 'average_rssi') and threat.average_rssi else "N/A"
             row = [
                 threat.device_mac,
                 threat.level,
@@ -178,7 +179,7 @@ class DataExporter:
                 str(threat.detection_count),
                 f"{threat.dwell_time:.1f}",
                 str(threat.location_count),
-                str(threat.avg_rssi) if threat.avg_rssi else "N/A",
+                str(avg_rssi),
                 threat.rssi_trend or "N/A",
                 "YES" if threat.is_following else "NO"
             ]

@@ -479,13 +479,14 @@ class HTMLReporter:
         
         for mac, threat in sorted(threats.items(), key=lambda x: x[1].score, reverse=True):
             badge_class = f"badge-{threat.level}"
+            avg_rssi = threat.average_rssi if hasattr(threat, 'average_rssi') and threat.average_rssi else 'N/A'
             html += f"""
                     <tr>
                         <td><code>{mac}</code></td>
                         <td><span class="threat-badge {badge_class}">{threat.level.upper()}</span></td>
                         <td>{threat.score:.1f}</td>
                         <td>{threat.location_count}</td>
-                        <td>{threat.avg_rssi or 'N/A'}</td>
+                        <td>{avg_rssi}</td>
                         <td>{threat.rssi_trend or 'N/A'}</td>
                     </tr>
             """
