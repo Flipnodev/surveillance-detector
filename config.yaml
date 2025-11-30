@@ -48,6 +48,34 @@ kismet:
   username: "kismet"
   password: "kismet"
 
+# GUI Configuration (ADDED FOR PHASE 2)
+gui:
+  window:
+    title: "Surveillance Detection System"
+    width: 1024
+    height: 768
+  
+  theme: "dark"  # Change to "light" for light mode
+  
+  log_update_interval: 1000
+  status_update_interval: 2000
+  
+  max_log_lines: 1000
+
+# Data persistence
+persistence:
+  auto_save: true
+  save_interval: 60
+  keep_sessions: 10
+  format: "json"
+
+# Performance tuning
+performance:
+  max_devices: 1000
+  memory_warning_mb: 500
+  auto_cleanup: true
+  retention_hours: 24
+
 debug:
   enabled: false
   use_mock_data: true
