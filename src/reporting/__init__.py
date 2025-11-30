@@ -1,9 +1,14 @@
 """
-src/reporting/__init__.py - Updated reporting package init
-"""
-# Reporting modules will be imported as implemented
-# from .kml_generator import KMLGenerator
-# from .markdown_report import MarkdownReport
-# from .html_report import HTMLReport
+Report generation modules.
 
-__all__ = []
+Includes:
+- KMLGenerator: Google Earth map visualization
+- HTMLReporter: Professional HTML reports (coming soon)
+- JSONExporter: JSON data export
+"""
+
+from .kml_generator import KMLGenerator
+
+__all__ = [
+    'KMLGenerator',
+]
