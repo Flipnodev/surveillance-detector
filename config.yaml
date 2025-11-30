@@ -1,0 +1,53 @@
+app:
+  name: "Surveillance Detector"
+  version: "1.0.0"
+  log_level: "INFO"
+
+directories:
+  base: "outputs"
+  kml: "outputs/kml"
+  reports: "outputs/reports"
+  logs: "outputs/logs"
+  data: "outputs/data"
+
+logging:
+  console_level: "INFO"
+  file_level: "DEBUG"
+  max_file_size_mb: 10
+  backup_count: 5
+
+detection:
+  time_windows: [5, 10, 15, 20]
+  min_detections: 3
+  min_dwell_time: 300
+  rssi_proximity_threshold: -70
+  scoring:
+    detection_count_weight: 0.3
+    dwell_time_weight: 0.3
+    rssi_trend_weight: 0.2
+    location_count_weight: 0.2
+  threat_levels:
+    low: 30
+    medium: 60
+    high: 80
+
+clustering:
+  eps_meters: 100
+  min_samples: 2
+  time_weighted: false
+
+gps:
+  min_accuracy: 50
+  use_bluetooth_gps: true
+  timeout: 30
+
+kismet:
+  enabled: false
+  host: "localhost"
+  port: 2501
+  username: "kismet"
+  password: "kismet"
+
+debug:
+  enabled: false
+  use_mock_data: true

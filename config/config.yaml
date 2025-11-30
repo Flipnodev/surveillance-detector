@@ -1,0 +1,189 @@
+# Surveillance Detection System Configuration
+
+# Application settings
+app:
+  name: "Surveillance Detector"
+  version: "1.0.0"
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+
+# Output directories
+directories:
+  base: "outputs"
+  kml: "outputs/kml"
+  reports: "outputs/reports"
+  logs: "outputs/logs"
+  data: "outputs/data"
+
+# Logging configuration
+logging:
+  console_level: "INFO"
+  file_level: "DEBUG"
+  max_file_size_mb: 10
+  backup_count: 5
+  
+# Detection parameters
+detection:
+  # Time windows for analysis (minutes)
+  time_windows: [5, 10, 15, 20]
+  
+  # Minimum detections to consider a device
+  min_detections: 3
+  
+  # Minimum dwell time (seconds)
+  min_dwell_time: 300  # 5 minutes
+  
+  # RSSI threshold for proximity (dBm)
+  rssi_proximity_threshold: -70
+  
+  # Threat scoring weights
+  scoring:
+    detection_count_weight: 0.3
+    dwell_time_weight: 0.3
+    rssi_trend_weight: 0.2
+    location_count_weight: 0.2
+  
+  # Threat level thresholds (0-100)
+  threat_levels:
+    low: 30
+    medium: 60
+    high: 80
+
+# Clustering configuration (DBSCAN)
+clustering:
+  # Maximum distance between points in meters (100m default)
+  eps_meters: 100
+  
+  # Minimum points to form a cluster
+  min_samples: 2
+  
+  # Consider time in clustering
+  time_weighted: false
+
+# GPS configuration
+gps:
+  # Minimum GPS accuracy to accept (meters)
+  min_accuracy: 50
+  
+  # Use Bluetooth GPS sources
+  use_bluetooth_gps: true
+  
+  # GPS timeout (seconds)
+  timeout: 30
+
+# Kismet API configuration
+kismet:
+  enabled: false  # Set to true when ready to connect
+  host: "localhost"
+  port: 2501
+  username: "kismet"
+  password: "kismet"
+  
+  # API endpoints
+  api:
+    devices: "/devices/views/all/devices.json"
+    gps: "/gps/location.json"
+    stream: "/eventbus/events.json"
+  
+  # Update intervals (seconds)
+  polling_interval: 5
+  
+  # Device filters
+  filters:
+    include_types: ["WiFi", "Bluetooth"]
+    exclude_empty_mac: true
+
+# WiGLE API configuration
+wigle:
+  enabled: false  # Set to true when ready to use
+  api_key: "YOUR_WIGLE_API_KEY_HERE"
+  api_url: "https://api.wigle.net/api/v2"
+  
+  # Rate limiting
+  requests_per_minute: 10
+  
+  # Search radius (meters)
+  search_radius: 100
+
+# Reporting configuration
+reporting:
+  # Generate reports automatically
+  auto_generate: true
+  
+  # Report formats to generate
+  formats:
+    - "markdown"
+    - "html"
+    - "kml"
+  
+  # KML styling
+  kml:
+    centroid_icon: "http://maps.google.com/mapfiles/kml/paddle/red-stars.png"
+    device_icon: "http://maps.google.com/mapfiles/kml/paddle/blu-circle.png"
+    line_color: "ff0000ff"  # AABBGGRR format (red)
+    line_width: 2
+    
+  # HTML report styling
+  html:
+    use_pandoc: true
+    pandoc_template: null  # Use default template
+    css_style: "github"  # github, default, simple
+
+# GUI configuration
+gui:
+  # Window settings
+  window:
+    title: "Surveillance Detection System"
+    width: 1024
+    height: 768
+    
+  # Theme
+  theme: "light"  # light, dark
+  
+  # Update intervals (milliseconds)
+  log_update_interval: 1000
+  status_update_interval: 2000
+  
+  # Maximum log lines to display
+  max_log_lines: 1000
+
+# Data persistence
+persistence:
+  # Save session data automatically
+  auto_save: true
+  
+  # Save interval (seconds)
+  save_interval: 60
+  
+  # Keep old session files
+  keep_sessions: 10
+  
+  # Session file format
+  format: "json"  # json, pickle
+
+# Performance tuning
+performance:
+  # Maximum devices to track simultaneously
+  max_devices: 1000
+  
+  # Memory usage warning threshold (MB)
+  memory_warning_mb: 500
+  
+  # Clean old data automatically
+  auto_cleanup: true
+  
+  # Data retention (hours)
+  retention_hours: 24
+
+# Development/Debug settings
+debug:
+  # Enable debug mode
+  enabled: false
+  
+  # Use mock data instead of real APIs
+  use_mock_data: true
+  
+  # Save raw API responses
+  save_api_responses: false
+  
+  # Verbose logging
+  verbose: false

@@ -1,0 +1,132 @@
+# Surveillance Detection System - .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Generated outputs (all test/runtime data)
+outputs/
+*.log
+
+# Test data
+tests/__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+.hypothesis/
+
+# Personal configuration (keep template, ignore local overrides)
+config.local.yaml
+
+# API keys and secrets
+*.key
+*.pem
+secrets.yaml
+.env
+.env.local
+
+# Raspberry Pi specific
+*.swp
+*.swo
+*~
+
+# Kismet data files
+*.kismet
+*.pcap
+*.pcapng
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
+*.backup
+*.bak
+*.old
+
+# Compiled reports (keep source templates)
+outputs/reports/*.html
+outputs/reports/*.pdf
+
+# KML files (generated)
+outputs/kml/*.kml
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Jupyter Notebooks (if used for analysis)
+.ipynb_checkpoints/
+*.ipynb
+
+# Documentation builds
+docs/_build/
+docs/_static/
+docs/_templates/
+
+# OS-specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor backups
+*~
+\#*\#
+.#*
